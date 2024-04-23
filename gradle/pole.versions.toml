@@ -1,0 +1,88 @@
+[versions]
+kotlin = "1.9.22"
+spring-boot = "3.2.3"
+spring-dependency-management-plugin = "1.1.4"
+kotlin-logging-jvm = "3.0.5"
+micrometer-registry-prometheus = "1.12.3"
+jdbc-postgres = "42.7.2"
+ktor = "2.3.9"
+temporal = "1.23.1"
+
+[plugins]
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinSpring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlinAllOpen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlinJpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+springDependencyManagement = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management-plugin" }
+springBoot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+
+
+[libraries]
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring-boot" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
+spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security", version.ref = "spring-boot" }
+
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-logging-jvm = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlin-logging-jvm" }
+
+jdbc-postgres = { module = "org.postgresql:postgresql", version.ref = "jdbc-postgres" }
+micrometer-registry-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version.ref = "micrometer-registry-prometheus" }
+
+spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools", version.ref = "spring-boot" }
+
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-jackson = { module = "io.ktor:ktor-client-jackson", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-serialization-jackson = { module = "io.ktor:ktor-serialization-jackson", version.ref = "ktor" }
+
+temporal-sdk = {module="io.temporal:temporal-sdk", version.ref="temporal"}
+temporal-kotlin = {module="io.temporal:temporal-kotlin", version.ref="temporal"}
+temporal-spring = {module="io.temporal:temporal-spring-boot-starter-alpha", version.ref="temporal"}
+
+[bundles]
+devtools = [
+    "spring-boot-devtools"
+]
+
+core = [
+    "kotlin-reflect",
+    "kotlin-stdlib",
+    "kotlin-logging-jvm",
+    "spring-boot-starter-actuator",
+    "spring-boot-starter-web",
+    "spring-boot-starter-security",
+    "spring-boot-configuration-processor",
+]
+coreRuntime = [
+    "micrometer-registry-prometheus",
+]
+coreAnnotationProcessor = [
+    "spring-boot-configuration-processor",
+]
+
+jpa = [
+    "spring-boot-starter-data-jpa",
+]
+jpaRuntime = [
+    "jdbc-postgres",
+]
+
+temporal = [
+    "temporal-sdk",
+    "temporal-kotlin",
+    "temporal-spring",
+]
+
+ktorClient = [
+    "ktor-client-core",
+    "ktor-client-cio",
+    "ktor-client-content-negotiation",
+    "ktor-client-jackson",
+    "ktor-client-logging",
+    "ktor-serialization-jackson",
+]
