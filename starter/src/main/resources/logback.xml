@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
+    <include resource="rf/pole/lib/core/logging/base.xml"/>
+
+    <root level="INFO"/>
+    <logger name="rf.pole" level="DEBUG"/>
+    <logger name="io.temporal" level="INFO"/>
+</configuration>

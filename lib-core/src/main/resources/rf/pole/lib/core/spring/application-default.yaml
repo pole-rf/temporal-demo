@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  output:
+    ansi:
+      enabled: true
+
+spring:
+  banner:
+    location: "classpath:rf/pole/lib/core/spring/banner-pole-rf.txt"
+  main:
+    log-startup-info: true
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: "/actuator"
+      exposure:
+        include: "prometheus,health,flyway,info"
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true
+        add-additional-paths: false
+      show-details: never
+      group:
+        liveness:
+          additional-path: "server:/_livez"
+        readiness:
+          additional-path: "server:/_readyz"
+    flyway:
+      enabled: true
+    info:
+      enabled: true
+    prometheus:
+      enabled: true
+      metrics:
+        export:
+          enabled: true

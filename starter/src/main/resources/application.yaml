@@ -1,0 +1,39 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: starter
+  # temporal specific configs
+  temporal:
+    namespace: ms-starter
+    connection:
+      target: 127.0.0.1:7233
+    workers:
+      - task-queue: starter
+        name: starter
+
+#      - task-queue: periodic-job-5m
+#        name: periodic-job-5m
+#        capacity:
+#          max-concurrent-workflow-task-executors: 1
+#
+#      - task-queue: periodic-job-10s
+#        name: periodic-job-10s
+#        capacity:
+#          max-concurrent-workflow-task-executors: 1
+
+#      - task-queue: starter-first
+#        name: starter-first
+#      - task-queue: starter-second
+#        name: starter-second
+#        capacity:
+#          max-concurrent-workflow-task-pollers: 2
+#          max-concurrent-activity-task-pollers: 2
+#        rate-limits:
+#          max-worker-activities-per-second: 2
+#          max-task-queue-activities-per-second: 2
+    workflow-cache:
+      max-instances: 2
+      max-threads: 2
+    workersAutoDiscovery:
+      packages: rf.pole.demos.temporal.ms_starter
