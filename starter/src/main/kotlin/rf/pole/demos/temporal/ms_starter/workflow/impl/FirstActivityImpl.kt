@@ -11,8 +11,9 @@ import rf.pole.demos.temporal.ms_starter.workflow.api.FirstActivity
 class FirstActivityImpl : FirstActivity {
     private val log = Workflow.getLogger(FirstActivityImpl::class.java)!!
 
-    override fun doFirstAction(data: String) {
+    override fun doFirstAction(data: String, ext: String?): String? {
         println("doFirstAction() call")
-        log.debug("doFirstAction() call")
+        log.debug("doFirstAction($data, $ext) call")
+        return null
     }
 }

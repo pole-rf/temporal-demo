@@ -30,7 +30,7 @@ open class OtherWorkflowImpl : OtherWorkflow {
     override fun execute(data: String) {
         log.debug("Starting SomeWorkflow execution")
 
-        firstActivity.doFirstAction(data)
+        firstActivity.doFirstAction(data, "zzz")
         secondActivity.doSecondAction(data)
 
         publishEventB.publish("subType1", data)

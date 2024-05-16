@@ -4,7 +4,6 @@ import io.temporal.client.WorkflowClient
 import io.temporal.client.WorkflowOptions
 import io.temporal.workflow.Workflow
 import rf.pole.demos.temporal.ms_pub_sub.activity.api.PublishEventB
-import rf.pole.demos.temporal.ms_pub_sub.workflow.EventAWorkflow
 import rf.pole.demos.temporal.ms_pub_sub.workflow.EventBWorkflow
 import java.util.UUID.randomUUID
 

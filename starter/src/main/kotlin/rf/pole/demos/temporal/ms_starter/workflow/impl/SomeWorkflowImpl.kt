@@ -9,9 +9,6 @@ import rf.pole.demos.temporal.ms_starter.workflow.api.FirstActivity
 import rf.pole.demos.temporal.ms_starter.workflow.api.SecondActivity
 import rf.pole.demos.temporal.ms_starter.workflow.api.SomeWorkflow
 import java.time.Duration
-import java.time.Instant
-import java.time.LocalDateTime
-import kotlin.time.measureTime
 
 @WorkflowImpl(workers = ["starter"], taskQueues = ["starter"])
 open class SomeWorkflowImpl : SomeWorkflow {
@@ -41,24 +38,24 @@ open class SomeWorkflowImpl : SomeWorkflow {
         // - каждый раз при создании класса SomeWorkflowImpl
         // - Temporal помнит "точку сохранения" и код пере-выполнятеся до этой точки
         // - Точка сохранения - фактически это вызов Activity или Signal - если для данного WorkflowId в истории выполнения нет информации - это означает что это и есть точка сохранения
-        println("execute(): ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
+//        println("execute(): ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
 
         log.debug("Starting SomeWorkflow execution")
 
-//        val resFirst = Async.function(firstActivity::doFirstAction, data)
-//        val resSecond = Async.function(secondActivity::doSecondAction, data)
+        val resFirst = Async.function(firstActivity::doFirstAction, data, null)
+        val resSecond = Async.function(secondActivity::doSecondAction, data)
 
         Workflow.await(Duration.ofMinutes(40)) {
-            println("zzz(${Instant.now().toEpochMilli()}) ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
+//            println("zzz(${Instant.now().toEpochMilli()}) ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
 
             this.proceed
         }
 
-        println("ooo(${Instant.now().toEpochMilli()}) ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
+//        println("ooo(${Instant.now().toEpochMilli()}) ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
 
-//        resFirst.get()
-//        resSecond.get()
-        log.debug("Activities finished")
+        val respFirst = resFirst.get()
+        val respSecond = resSecond.get()
+        log.debug("Activities finished ($firstActivity, $secondActivity)")
 
         val r = publishEventA.publish("subType1", data)
         log.debug("r: $r")
@@ -69,7 +66,7 @@ open class SomeWorkflowImpl : SomeWorkflow {
      *  Потом будет выполнен код метода execute() и только после этого будет выполнен метод query()
      */
     override fun query(): String {
-        println("query():    ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
+//        println("query():    ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
         return "123123"
     }
 
@@ -78,7 +75,7 @@ open class SomeWorkflowImpl : SomeWorkflow {
      *  Потом будет выполнен код метода execute() и только после этого будет выполнен метод signal()
      */
     override fun signal() {
-        println("signal():   ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
+//        println("signal():   ${Thread.currentThread().id} / ${Thread.currentThread().name} / ${this.toString()}")
         proceed = true
     }
 }

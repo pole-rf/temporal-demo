@@ -18,6 +18,7 @@ dependencies {
     runtimeOnly(pole.bundles.coreRuntime)
 
     implementation(pole.bundles.temporal)
+    implementation(pole.bundles.ktorClient)
 }
 
 springBoot {

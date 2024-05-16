@@ -3,8 +3,6 @@ package rf.pole.demos.temporal.ms_starter.workflow.impl
 import io.temporal.spring.boot.WorkflowImpl
 import io.temporal.workflow.Workflow
 import rf.pole.demos.temporal.ms_starter.workflow.api.CronJob
-import rf.pole.demos.temporal.ms_starter.workflow.api.PeriodicJob10s
-import rf.pole.demos.temporal.ms_starter.workflow.api.PeriodicJob5m
 import java.time.Duration
 
 @WorkflowImpl(workers = ["cron-job"], taskQueues = ["cron-job"])

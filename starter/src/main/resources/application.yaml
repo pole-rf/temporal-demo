@@ -33,7 +33,7 @@ spring:
 #          max-worker-activities-per-second: 2
 #          max-task-queue-activities-per-second: 2
     workflow-cache:
-      max-instances: 2
-      max-threads: 2
+      max-instances: 20
+      max-threads: 20
     workersAutoDiscovery:
       packages: rf.pole.demos.temporal.ms_starter

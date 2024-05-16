@@ -6,7 +6,7 @@ kotlin-logging-jvm = "3.0.5"
 micrometer-registry-prometheus = "1.12.3"
 jdbc-postgres = "42.7.2"
 ktor = "2.3.9"
-temporal = "1.23.1"
+temporal = "1.23.2"
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -55,7 +55,7 @@ core = [
     "kotlin-logging-jvm",
     "spring-boot-starter-actuator",
     "spring-boot-starter-web",
-    "spring-boot-starter-security",
+#    "spring-boot-starter-security",
     "spring-boot-configuration-processor",
 ]
 coreRuntime = [

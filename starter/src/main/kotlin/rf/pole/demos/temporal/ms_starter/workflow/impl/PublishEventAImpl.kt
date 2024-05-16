@@ -2,8 +2,6 @@ package rf.pole.demos.temporal.ms_starter.workflow.impl
 
 import io.temporal.client.WorkflowClient
 import io.temporal.spring.boot.ActivityImpl
-import jakarta.annotation.Resource
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 import rf.pole.demos.temporal.ms_pub_sub.activity.impl.AbstractPublishEventA
