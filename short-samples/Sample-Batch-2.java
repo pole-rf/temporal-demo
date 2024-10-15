@@ -1,3 +1,11 @@
+IteratorBatchWorkflow batchWorkflowStub workflowClient.newWorkflowStub(
+  IteratorBatchWorkflow.class,
+  WorkflowOptions.newBuilder().setTaskQueue(Worker.TASK_QUEUE_NAME).build());
+
+WorkflowClient.start(batchWorkflowStub::processBatch, config.pageSize, 0)
+
+
+
 public int processBatch(int pageSize, int offset) {
     // Получаем очередной список сущностей для обработки
     List<SingleRecord> records = recordLoader.getRecords(pageSize, offset);
